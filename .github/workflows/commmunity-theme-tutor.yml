@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Trigger community-theme-tutor pipeline
         run: |
-          curl --request POST --form token=${{ secrets.GITLAB_PIPELINE_TOKEN }} --form ref=main https://gitlab.example.com/api/v4/projects/48712583/trigger/pipeline
+          curl --request POST --form token=${{ secrets.GITLAB_PIPELINE_TOKEN }} --form ref=main https://gitlab.com/api/v4/projects/48712583/trigger/pipeline
