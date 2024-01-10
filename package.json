@@ -31,7 +31,7 @@
     "@edx/frontend-component-footer": "github:gymnasium/frontend-component-footer#gym.palm.4",
     "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
     "@edx/frontend-platform": "4.2.0",
-    "@edx/paragon": "20.28.5",
+    "@edx/paragon": "20.46.3",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -80,7 +80,7 @@
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
-    "@edx/browserslist-config": "1.1.1",
+    "@edx/browserslist-config": "1.2.0",
     "@edx/frontend-build": "npm:@openedx/frontend-build@13.0.24",
     "@edx/reactifex": "1.1.0",
     "@testing-library/jest-dom": "5.16.5",
