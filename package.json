@@ -12,6 +12,7 @@
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
+    "prepare": "npm run build",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests"
@@ -27,7 +28,6 @@
     "extends @edx/browserslist-config"
   ],
   "dependencies": {
-    "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
     "@edx/frontend-component-footer": "github:gymnasium/frontend-component-footer#gym.palm.4",
     "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
     "@edx/frontend-platform": "4.2.0",
@@ -37,6 +37,7 @@
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
     "@tensorflow-models/blazeface": "0.0.7",
     "@tensorflow/tfjs-converter": "3.21.0",
     "@tensorflow/tfjs-core": "3.21.0",
@@ -81,7 +82,7 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "1.2.0",
-    "@edx/frontend-build": "npm:@openedx/frontend-build@13.0.24",
+    "@edx/frontend-build": "npm:@edx/frontend-build@12.8.6",
     "@edx/reactifex": "1.1.0",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
