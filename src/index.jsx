@@ -4,14 +4,13 @@ import 'regenerator-runtime/runtime';
 import 'formdata-polyfill';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import {
-  subscribe, initialize, APP_INIT_ERROR, APP_READY, mergeConfig,
+  subscribe, getConfig, initialize, APP_INIT_ERROR, APP_READY, mergeConfig,
 } from '@edx/frontend-platform';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
@@ -19,28 +18,43 @@ import IdVerificationPage from './id-verification';
 import CoachingConsent from './account-settings/coaching/CoachingConsent';
 import appMessages from './i18n';
 
+import GymSettings, { GymFooter, GymHeader } from './gym-frontend-components';
+const timestamp = Date.now();
+const settings = await GymSettings;
+const root = settings.urls.root; // should be same as marketing URL
+const config = getConfig();
+const css = `${root}${settings.css.mfe}?${timestamp}`;
+const title = `Account Settings | ${getConfig().SITE_NAME}`;
+
 import './index.scss';
-import Head from './head/Head';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
-      <Head />
-      <Switch>
-        <Route path="/coaching_consent" component={CoachingConsent} />
-        <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
-          <Header />
-          <main className="flex-grow-1">
-            <Switch>
-              <Route path="/id-verification" component={IdVerificationPage} />
-              <Route exact path="/" component={AccountSettingsPage} />
-              <Route path="/notfound" component={NotFoundPage} />
-              <Route path="*" component={NotFoundPage} />
+      <Helmet>
+        <title>{title}</title>
+        <link rel="shortcut icon" href={config.FAVICON_URL} type="image/x-icon" />
+        <link rel="stylesheet" href={css} />
+      </Helmet>
+      <GymHeader secondaryNav="account" />
+      <main>
+        <div class="container">
+          <Switch>
+            <Route path="/coaching_consent" component={CoachingConsent} />
+              
+              
+                <Switch>
+                  <Route path="/id-verification" component={IdVerificationPage} />
+                  <Route exact path="/" component={AccountSettingsPage} />
+                  <Route path="/notfound" component={NotFoundPage} />
+                  <Route path="*" component={NotFoundPage} />
+                </Switch>
+              
+              
             </Switch>
-          </main>
-          <Footer />
-        </div>
-      </Switch>
+          </div>
+        </main>
+      <GymFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
@@ -52,9 +66,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 
 initialize({
   messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
+    appMessages
   ],
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
