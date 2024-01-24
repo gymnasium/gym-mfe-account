@@ -38,7 +38,7 @@ subscribe(APP_READY, () => {
       </Helmet>
       <GymHeader secondaryNav="account" />
         <main>
-          <div class="container">
+          <div className="container">
             <Switch>
               <Route path="/coaching_consent" component={CoachingConsent} />
               <Route path="/id-verification" component={IdVerificationPage} />
