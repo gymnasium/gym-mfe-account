@@ -35,7 +35,7 @@ export const defaultState = {
   resetPassword: resetPasswordReducer(),
   nameChange: nameChangeReducer(),
   thirdPartyAuth: thirdPartyAuthReducer(),
-  nameChangeModal: false,
+  nameChangeModal: null,
   verifiedName: null,
   mostRecentVerifiedName: {},
   verifiedNameHistory: {},
@@ -97,7 +97,7 @@ const reducer = (state = defaultState, action = {}) => {
           saveState: null,
           errors: {},
           drafts: {},
-          nameChangeModal: false,
+          nameChangeModal: null,
         };
       }
       return state;

@@ -73,7 +73,7 @@ const JumpNav = ({
 
 JumpNav.propTypes = {
   intl: intlShape.isRequired,
-  displayDemographicsLink: PropTypes.bool.isRequired,
+  displayDemographicsLink: PropTypes.bool,
 };
 
 export default injectIntl(JumpNav);
