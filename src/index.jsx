@@ -36,7 +36,7 @@ subscribe(APP_READY, () => {
         <link rel="shortcut icon" href={config.FAVICON_URL} type="image/x-icon" />
         <link rel="stylesheet" href={css} />
       </Helmet>
-      <GymHeader secondaryNav="dashboard" />
+      <GymHeader activeLink="account" secondaryNav="dashboard" />
         <main>
           <div className="container">
             <Switch>
