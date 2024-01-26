@@ -1,10 +1,36 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-@import "~@openedx/brand-openedx/paragon/fonts";
-@import "~@openedx/brand-openedx/paragon/variables";
-@import "~@edx/paragon/scss/core/core";
-@import "~@openedx/brand-openedx/paragon/overrides";
+// @import "~@openedx/brand-openedx/paragon/fonts";
+// @import "~@openedx/brand-openedx/paragon/variables";
+
+
+// Instead of importing the paragon core, we are selectively importing partials
+// @import "~@edx/paragon/scss/core/core";
+
+@import "~@edx/paragon/scss/core/functions";
+@import "~@edx/paragon/scss/core/variables";
+@import "~bootstrap/scss/mixins";
+// @import "~bootstrap/scss/root";
+// @import "~bootstrap/scss/reboot";
+// @import "~@edx/paragon/scss/core/typography";
+@import "~@edx/paragon/scss/core/grid";
+// The react-loading-skeleton package.json defines an 'exports' field which specifies a '.css'
+// extension on this export.  Without the '.css' on the end of this line, webpack can't find the file
+// and the build fails.
+// See https://webpack.js.org/guides/package-exports/ for more information on how webpack uses
+// the 'exports' field.
+// @import "~react-loading-skeleton/dist/skeleton.css";
+// @import "~bootstrap/scss/transitions";
+@import "~@edx/paragon/scss/core/utilities";
+// @import "~bootstrap/scss/media";
+// @import "~bootstrap/scss/list-group";
+// @import "~bootstrap/scss/print";
+
+// Paragon components
+// @import "~@edx/paragon/src/index";
+
+// @import "~@openedx/brand-openedx/paragon/overrides";
 
 @import "./account-settings/style";
 @import "./id-verification/id-verification";
