@@ -4,14 +4,25 @@ import 'regenerator-runtime/runtime';
 import 'formdata-polyfill';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import {
-  subscribe, initialize, APP_INIT_ERROR, APP_READY, mergeConfig,
+  APP_INIT_ERROR,
+  APP_READY,
+  getConfig,
+  initialize,
+  mergeConfig,
+  subscribe,
 } from '@edx/frontend-platform';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Routes, Outlet } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import Header from '@edx/frontend-component-header';
-import Footer from '@edx/frontend-component-footer';
+const config = getConfig();
+import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
+const timestamp = Date.now();
+const settings = await GymSettings;
+const root = settings.urls.root; // should be same as marketing URL
+const css = `${root}${settings.css.mfe}?${timestamp}`;
+const title = `Account Settings | ${getConfig().SITE_NAME}`;
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
@@ -19,22 +30,28 @@ import IdVerificationPage from './id-verification';
 import messages from './i18n';
 
 import './index.scss';
-import Head from './head/Head';
+
 import NotificationCourses from './notification-preferences/NotificationCourses';
 import NotificationPreferences from './notification-preferences/NotificationPreferences';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
-      <Head />
+      <Helmet>
+        <title>{title}</title>
+        <link rel="shortcut icon" href={config.FAVICON_URL} type="image/x-icon" />
+        <link rel="stylesheet" href={css} />
+      </Helmet>
+      <GymHeader secondaryNav="dashboard" activeLink="account" />
+      <main><div className="container">
       <Routes>
         <Route element={(
           <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
-            <Header />
+
             <main className="flex-grow-1">
               <Outlet />
             </main>
-            <Footer />
+
           </div>
         )}
         >
@@ -46,6 +63,8 @@ subscribe(APP_READY, () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      </div></main>
+      <GymFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
