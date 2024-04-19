@@ -10,8 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Routes, Outlet } from 'react-router-dom';
 
-import Header from '@edx/frontend-component-header';
-import Footer from '@edx/frontend-component-footer';
+import { GymFooter, GymHeader } from '@edx/gym-frontend';
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
@@ -30,11 +29,13 @@ subscribe(APP_READY, () => {
       <Routes>
         <Route element={(
           <div className="d-flex flex-column" style={{ minHeight: '100vh' }}>
-            <Header />
-            <main className="flex-grow-1" id="main">
-              <Outlet />
+            <GymHeader secondaryNav="dashboard" />
+            <main className="main" id="main">
+              <div className="container">
+                <Outlet />
+              </div>
             </main>
-            <Footer />
+            <GymFooter />
           </div>
         )}
         >
