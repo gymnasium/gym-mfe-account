@@ -53,6 +53,9 @@ import DemographicsSection from './demographics/DemographicsSection';
 import { fetchCourseList } from '../notification-preferences/data/thunks';
 import { withLocation, withNavigate } from './hoc';
 
+// Get custom messages from Gymnasium JSON
+const getMsg = () => getConfig().GYM_MSG;
+
 class AccountSettingsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -508,6 +511,10 @@ class AccountSettingsPage extends React.Component {
       && this.props.formValues.year_of_birth.toString() >= COPPA_COMPLIANCE_YEAR.toString()
       && !localStorage.getItem('submittedDOB')
     );
+
+    // custom deletion message
+    const msg = { __html: getMsg()['mfe']['account']['deletion']};
+
     return (
       <>
         { shouldUpdateDOB
@@ -807,6 +814,14 @@ class AccountSettingsPage extends React.Component {
             />
           </div>
           )}
+        
+        {/* Custom account deletion message */}
+        {getMsg()['mfe']['account']['deletion'] && (
+          <div className="account-section pt-3 mb-5" id="custom-delete-account" ref={this.navLinkRefs['#custom-delete-account']}>
+            <h2 className="section-heading h4 mb-3">Account Deletion</h2>
+            <div dangerouslySetInnerHTML={msg} />
+          </div>
+        )}
 
       </>
     );
