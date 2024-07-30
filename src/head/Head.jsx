@@ -13,9 +13,9 @@ const getStyles = () => `${ getBaseUrl() }/css/mfe-account.css`;
 const Head = ({ intl }) => (
   <Helmet>
     <title>
-      { getSiteName() }
+      {intl.formatMessage(messages['account.page.title'], { siteName: getSiteName() })}
     </title>
-    <link rel="shortcut icon" href={ getFaviconUrl() } type="image/x-icon" />
+    <link rel="shortcut icon" href={getFaviconUrl()} type="image/x-icon" />
     <link rel="stylesheet" href={ getStyles() } />
   </Helmet>
 );
