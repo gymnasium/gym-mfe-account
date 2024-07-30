@@ -1,7 +1,7 @@
 {
   "name": "@edx/frontend-app-account",
-  "version": "1.0.0-semantically-released",
-  "description": "User account micro-frontend for Open edX",
+  "version": "1.0.0-gym.redwood",
+  "description": "Gymnasium-specific user account micro-frontend for Open edX",
   "author": "edX",
   "license": "AGPL-3.0",
   "repository": {
@@ -31,6 +31,7 @@
     "@edx/frontend-component-footer": "^13.2.0",
     "@edx/frontend-component-header": "5.3.0",
     "@edx/frontend-platform": "8.0.1",
+    "@edx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@edx/openedx-atlas": "^0.6.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
@@ -45,6 +46,7 @@
     "bowser": "2.11.0",
     "classnames": "2.5.1",
     "core-js": "3.37.0",
+    "dompurify": "^3.1.6",
     "font-awesome": "4.7.0",
     "form-urlencoded": "6.1.4",
     "formdata-polyfill": "4.0.10",
