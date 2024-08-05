@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Routes, Outlet } from 'react-router-dom';
 
-import { GymFooter as FooterSlot, GymHeader } from '@edx/gym-frontend';
+import { GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
