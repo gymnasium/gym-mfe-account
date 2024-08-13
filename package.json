@@ -28,9 +28,7 @@
   ],
   "dependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
-    "@edx/frontend-component-header": "5.3.4",
     "@edx/frontend-platform": "8.1.1",
-    "@edx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@edx/openedx-atlas": "^0.6.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
@@ -38,7 +36,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@openedx/frontend-plugin-framework": "^1.2.2",
-    "@openedx/frontend-slot-footer": "^1.0.2",
     "@openedx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@openedx/paragon": "22.0.0",
     "@tensorflow-models/blazeface": "0.0.7",
