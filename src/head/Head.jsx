@@ -5,18 +5,13 @@ import { getConfig } from '@edx/frontend-platform';
 
 import messages from './messages';
 
-const getBaseUrl = () => getConfig().MARKETING_SITE_BASE_URL;
 const getSiteName = () => getConfig().SITE_NAME;
-const getFaviconUrl = () => getConfig().FAVICON_URL;
-const getStyles = () => `${ getBaseUrl() }/css/mfe-account.css`;
 
 const Head = ({ intl }) => (
   <Helmet>
     <title>
       {intl.formatMessage(messages['account.page.title'], { siteName: getSiteName() })}
     </title>
-    <link rel="shortcut icon" href={getFaviconUrl()} type="image/x-icon" />
-    <link rel="stylesheet" href={ getStyles() } />
   </Helmet>
 );
 
