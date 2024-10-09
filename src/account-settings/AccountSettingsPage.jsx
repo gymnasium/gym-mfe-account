@@ -1,5 +1,6 @@
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig, getQueryParameters } from '@edx/frontend-platform';
+import { logError } from '@edx/frontend-platform/logging';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -55,6 +56,10 @@ import { withLocation, withNavigate } from './hoc';
 
 // Get custom messages from Gymnasium JSON
 const getMsg = () => getConfig().GYM_MSG;
+
+import {Intercom, boot, update } from "@intercom/messenger-js-sdk";
+
+const INTERCOM_APP_ID = () => getConfig().INTERCOM_APP_ID;
 
 class AccountSettingsPage extends React.Component {
   constructor(props, context) {
@@ -809,7 +814,7 @@ class AccountSettingsPage extends React.Component {
           && (
           <div className="account-section pt-3 mb-5" id="delete-account" ref={this.navLinkRefs['#delete-account']}>
             <DeleteAccount
-              isVerifiedAccount={this.props.isActive}
+              isVerifiedAccount={this.props.isactive}
               hasLinkedTPA={hasLinkedTPA}
             />
           </div>
@@ -849,6 +854,21 @@ class AccountSettingsPage extends React.Component {
       loaded,
       loadingError,
     } = this.props;
+
+    if (INTERCOM_APP_ID()) {
+      try {
+        Intercom({app_id: INTERCOM_APP_ID()});
+  
+        const INTERCOM_SETTINGS = {
+          email: this.context.authenticatedUser.email,
+          user_id: this.context.authenticatedUser.username,
+        }
+
+        update(INTERCOM_SETTINGS);
+      } catch (error) {
+        logError(error);
+      }
+    }
 
     return (
       <div className="page__account-settings container-fluid py-5">
