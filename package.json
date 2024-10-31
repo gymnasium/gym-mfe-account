@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-app-account",
-  "version": "1.0.1-gym.redwood",
+  "version": "1.0.2-gym.redwood",
   "description": "Gymnasium-specific user account micro-frontend for Open edX",
   "author": "edX",
   "license": "AGPL-3.0",
