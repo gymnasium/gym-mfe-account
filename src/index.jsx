@@ -2,7 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import 'formdata-polyfill';
-import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
+import { AppProvider } from '@edx/frontend-platform/react';
 import {
   subscribe, initialize, APP_INIT_ERROR, APP_READY, mergeConfig,
 } from '@edx/frontend-platform';
@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Routes, Outlet } from 'react-router-dom';
 
-import { GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
+import { ErrorPage, GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
